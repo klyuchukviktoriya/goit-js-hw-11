@@ -14,7 +14,7 @@ searchForm.addEventListener("submit", (event) => {
     }
 
     showLoader();
-
+    input.value = "";
     fetchImages(query)
         .then(images => {
             renderGallery(images);
