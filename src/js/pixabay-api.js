@@ -5,7 +5,7 @@ export function showError(message) {
         icon: "",
         backgroundColor: "#ef4040",
         position: "topRight",
-        message: "&#11198; Sorry, there are no images matching your search query. Please, try again!",
+        message: "Oh, shit! Type something",
         messageColor: "white",
     });
 }
@@ -30,7 +30,13 @@ export function fetchImages(query) {
         })
         .then(data => {
             if (data.hits.length === 0) {
-                showError();
+                iziToast.error({
+                    icon: "",
+                    backgroundColor: "#ef4040",
+                    position: "topRight",
+                    message: "&#11198; Sorry, there are no images matching your search query. Please, try again!",
+                    messageColor: "white",
+                })
             } else {
                 return data.hits;
             }
