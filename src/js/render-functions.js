@@ -1,7 +1,6 @@
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-import iziToast from "izitoast";
-import "izitoast/dist/css/iziToast.min.css";
+
 
 let lightbox;
 
@@ -41,15 +40,7 @@ export function hideLoader() {
     loader.style.display = "none";
 }
 
-export function showError(message) {
-    iziToast.error({
-        icon: "",
-        backgroundColor: "#ef4040",
-        position: "topRight",
-        message: "&#11198; Sorry, there are no images matching your search query. Please, try again!",
-        messageColor: "white",
-    });
-}
+
 
 export function clearGallery() {
     const gallery = document.querySelector(".gallery");

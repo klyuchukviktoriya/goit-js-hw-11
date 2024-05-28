@@ -1,11 +1,12 @@
-import { fetchImages } from "./js/pixabay-api.js";
-import { renderGallery, showLoader, hideLoader, showError, clearGallery } from "./js/render-functions.js";
+import { showError, fetchImages } from "./js/pixabay-api.js";
+import { renderGallery, showLoader, hideLoader, clearGallery } from "./js/render-functions.js";
 
 const searchForm = document.querySelector(".form");
 const input = document.querySelector(".input");
 
 searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    clearGallery()
     const query = input.value.trim();
     if (!query) {
         showError();
@@ -16,12 +17,7 @@ searchForm.addEventListener("submit", (event) => {
 
     fetchImages(query)
         .then(images => {
-            if (input.value === "") {
-                clearGallery()
-                showError();
-            } else {
-                renderGallery(images);
-            }
+            renderGallery(images);
         })
         .catch(error => {
             showError(message, error);
